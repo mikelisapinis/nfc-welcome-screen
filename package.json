@@ -2,9 +2,10 @@
   "name": "elko-welcome-screen",
   "version": "1.0.0",
   "description": "NFC powered welcome screen",
-  "main": "app.js",
+  "main": "/public/app.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "nodemon ./public/app.js localhost 3000"
   },
   "keywords": [
     "nfc",
@@ -12,5 +13,12 @@
     "screen"
   ],
   "author": "mikelisapinis",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "express": "^4.16.3",
+    "file-system": "^2.2.2",
+    "nodemon": "^1.17.3",
+    "watch": "^1.0.2"
+  }
 }
