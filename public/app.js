@@ -1,12 +1,27 @@
+// SERVER
 const app = require('express')();
 const watch = require('watch')
 const server = require('http').Server(app);
 const port = 3000;
 
+
 // FILE SYSTEM
 var file = require('file-system');
 var fs = require('fs');
 file.readFile === fs.readFile;
+
+
+// MYSQL
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+     host: "localhost",
+     port: 8889,
+     user: "root",
+     password: "root",
+     database: "welcome"
+});
+
 
 
 server.listen(port, () => {
@@ -40,9 +55,24 @@ watch.watchTree('/Users/mikelis/Mikelish', function (f, curr, prev) {
           fs.readFile(f, 'utf-8', (err, data) => {
 
                if (err) throw err;
-
                var welcome = JSON.parse(data);
-               console.log(welcome.Uid);
+
+               con.connect(function (err) {
+
+                    if (err) throw err;
+                    console.log("Connected!");
+
+                    var sql = `SELECT * FROM guests WHERE uid='${welcome.Uid}'`;
+                    console.log(sql);
+
+                    con.query(sql, function (err, result) {
+                         if (err) throw err;
+                         console.log(result);
+                    });
+
+               });
+
+
 
           });
 
