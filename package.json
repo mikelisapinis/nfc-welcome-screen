@@ -1,0 +1,16 @@
+{
+  "name": "elko-welcome-screen",
+  "version": "1.0.0",
+  "description": "NFC powered welcome screen",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "nfc",
+    "welcome",
+    "screen"
+  ],
+  "author": "mikelisapinis",
+  "license": "ISC"
+}
